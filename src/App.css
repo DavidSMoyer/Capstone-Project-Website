@@ -48,6 +48,14 @@ section {
 #section-3 {
   background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1) ), url(images/section-3_bg.jpg) no-repeat center;
   background-size: 100%;
+  position: relative;
+}
+
+#stats-chart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #section-4 {
@@ -121,7 +129,7 @@ section {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.45);
   z-index: 20;
   opacity: 0;
   pointer-events: none;
