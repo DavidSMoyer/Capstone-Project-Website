@@ -1,6 +1,7 @@
 import './App.css';
 import SideNav from './SideNav.js';
 import Stats from './Stats.js';
+import Quiz from './Quiz.js';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
         <Stats />
       </section>
       <section id="section-4"></section>
-      <section id="quiz"></section>
+      <section id="quiz">
+        <Quiz />
+      </section>
     </>
   );
 }

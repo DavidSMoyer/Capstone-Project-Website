@@ -16,7 +16,7 @@ function SideNav() {
         </button>
         <ul>
           <li>
-            <a href="#title-card">Section 1</a>
+            <a href="#title-card">Driving in the Dark</a>
           </li>
           <li>
             <a href="#section-2">Section 2</a>
