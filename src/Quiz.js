@@ -10,32 +10,32 @@ function Quiz() {
     {
       question: "Question 1",
       answers: ["1", "2", "3", "4"],
-      correctAnswer: "2"
+      correctAnswer: 2
     },
     {
       question: "Question 2",
       answers: ["1", "2", "3", "4"],
-      correctAnswer: "4"
+      correctAnswer: 4
     },
     {
       question: "Question 3",
       answers: ["1", "2", "3", "4"],
-      correctAnswer: "3"
+      correctAnswer: 3
     },
     {
       question: "Question 5",
-      answers: ["1", "2", "3", "4"],
-      correctAnswer: "4"
+      answers: ["1", "2", "3", "link|https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"],
+      correctAnswer: 4
     },
     {
       question: "Question 5",
       answers: ["true", "false", "", ""],
-      correctAnswer: "true"
+      correctAnswer: 1
     },
     {
       question: "Question 6",
       answers: ["1", "2", "3", "4"],
-      correctAnswer: "4"
+      correctAnswer: 4
     }
   ]);
   //setQuestions(Shuffle(questions))
@@ -68,12 +68,23 @@ function Quiz() {
           {questions[questionIdx].question}
         </span>
       </h3>
-      <div id="questions">
-        <QuizAnswer answer={questions[questionIdx].answers[0]} answerCall={guess} />
-        <QuizAnswer answer={questions[questionIdx].answers[1]} answerCall={guess} />
-        <QuizAnswer answer={questions[questionIdx].answers[2]} answerCall={guess} />
-        <QuizAnswer answer={questions[questionIdx].answers[3]} answerCall={guess} />
-      </div>
+      {
+        !finished 
+        ? (
+        <div id="questions">
+          <QuizAnswer answer={questions[questionIdx].answers[0]} answerCall={guess} quizId={1} />
+          <QuizAnswer answer={questions[questionIdx].answers[1]} answerCall={guess} quizId={2} />
+          <QuizAnswer answer={questions[questionIdx].answers[2]} answerCall={guess} quizId={3} />
+          <QuizAnswer answer={questions[questionIdx].answers[3]} answerCall={guess} quizId={4} />
+        </div>
+        )
+        : (
+          <div id="quiz-popup">
+            <h3>Quiz Complete</h3>
+            <p>You got {correct}/{questions.length}</p>
+          </div>
+        )
+      }
     </div>
   )
 }
