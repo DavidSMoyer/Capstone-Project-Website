@@ -1,20 +1,21 @@
 import { Doughnut } from "react-chartjs-2"
 
 function Stats() {
-  const colors = [];
-  for (let i = 0; i < 7; i++) {
-    let r = Math.floor(Math.random() * 255)
-    let g = Math.floor(Math.random() * 255)
-    let b = Math.floor(Math.random() * 255)
-    colors.push(`rgb(${r}, ${g}, ${b})`)
-  }
+  const colors = [
+    "rgb(0, 0, 0)",
+    "rgb(0, 0, 50)",
+    "rgb(0, 0, 100)",
+    "rgb(0, 0, 150)",
+    "rgb(0, 0, 100)",
+    "rgb(0, 0, 50)"
+  ]
 
   let data = {
-    labels: ["Dataset", "Dataset", "Dataset", "Dataset", "Dataset", "Dataset", "Dataset"],
+    labels: ["Midnight - 3:59 am", "4:00 - 7:59 am", "8:00 - 11:59 am", "Noon - 3:59 pm", "4:00 - 7:59 pm", "8:00 - 11:59 pm"],
     datasets: [
       {
-        label: "Crashes",
-        data: [1, 2, 3, 4, 5, 6, 7],
+        label: "Time of Day",
+        data: [4430, 4307, 4050, 6078, 7174, 6956],
         backgroundColor: colors
       }
     ]
@@ -24,10 +25,11 @@ function Stats() {
     plugins: {
       title: {
         display: true,
-        text: "Crashes"
+        text: "Crashes Based on Time of Day"
       },
       legend: {
-        display: false
+        display: true,
+        position: "left"
       }
     },
     responsive: false,

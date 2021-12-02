@@ -1,7 +1,5 @@
 function QuizAnswer({ answer, answerCall, quizId }) {
 
-  console.log(answer.substring(5, answer.length));
-
   return (
     <div className="question-box" onClick={() => answerCall(quizId)} style={{display: (answer == "" ? "none" : "flex")}}>
       {

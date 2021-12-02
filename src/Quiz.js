@@ -8,35 +8,60 @@ function Quiz() {
   let [finished, setFinished] = useState(false);
   let [questions, setQuestions] = useState([
     {
-      question: "Question 1",
-      answers: ["1", "2", "3", "4"],
+      question: "Why is it dangerous to drive at night?",
+      answers: 
+      [
+        "Reduced Visibility", 
+        "Impaired Drivers",
+        "Rushing Drivers",
+        "All of the above"
+      ],
+      correctAnswer: 4
+    },
+    {
+      question: "Within what distance must you dim your headlights against oncoming traffic?",
+      answers: 
+      [
+        "60m", 
+        "200m",
+        "500m",
+        "120m"
+      ],
       correctAnswer: 2
     },
     {
-      question: "Question 2",
-      answers: ["1", "2", "3", "4"],
-      correctAnswer: 4
+      question: "When conditions are snowy or foggy, you must have your high beams on to increase visibility.",
+      answers: 
+      [
+        "True", 
+        "False",
+        "",
+        ""
+      ],
+      correctAnswer: 2
     },
     {
-      question: "Question 3",
-      answers: ["1", "2", "3", "4"],
-      correctAnswer: 3
-    },
-    {
-      question: "Question 5",
-      answers: ["1", "2", "3", "link|https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"],
-      correctAnswer: 4
-    },
-    {
-      question: "Question 5",
-      answers: ["true", "false", "", ""],
+      question: "More crashes occur between 4pm-8pm than any other time.",
+      answers: 
+      [
+        "True", 
+        "False",
+        "",
+        ""
+      ],
       correctAnswer: 1
     },
     {
-      question: "Question 6",
-      answers: ["1", "2", "3", "4"],
+      question: "What should not NOT do when driving at night?",
+      answers: 
+      [
+        "Dim your dashboard", 
+        "Look away from the headlights of other cars",
+        "Drive at a reduced speed",
+        "Drive even if you're drowsy"
+      ],
       correctAnswer: 4
-    }
+    },
   ]);
   //setQuestions(Shuffle(questions))
 

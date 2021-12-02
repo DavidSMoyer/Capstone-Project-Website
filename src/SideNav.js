@@ -19,13 +19,13 @@ function SideNav() {
             <a href="#title-card">Driving in the Dark</a>
           </li>
           <li>
-            <a href="#section-2">Section 2</a>
+            <a href="#section-2">Dangers of Driving in the Dark</a>
           </li>
           <li>
-            <a href="#section-3">Section 3</a>
+            <a href="#section-3">Statistics</a>
           </li>
           <li>
-            <a href="#section-4">Section 4</a>
+            <a href="#section-4">Safety Measures</a>
           </li>
         </ul>
       </nav>
