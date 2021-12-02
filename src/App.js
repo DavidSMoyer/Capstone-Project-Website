@@ -29,7 +29,13 @@ function App() {
         </p>
       </section>
       <section id="section-3">
+        <h2>Crashes Based on Time of Day</h2>
         <Stats />
+        <p>
+          As you can see above, a majority of crashes occur between 4pm - 8pm. This is typically when many people are
+          getting off of work, which can leave them antsy to get home, or they could be irrational due to having a bad
+          day.
+        </p>
       </section>
       <section id="section-4">
         <h2>Driving Safety Questions</h2>
@@ -55,6 +61,19 @@ function App() {
       <section id="quiz">
         <h2>Test Your Knowledge</h2>
         <Quiz />
+      </section>
+      <section id="bibliography">
+        <h2>Sources Used:</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/pulse/dangers-driving-dark-peter-cattell" target="_blank">The dangers of driving in the dark</a></li>
+          <li><a href="https://www.nsc.org/road-safety/safety-topics/night-driving"  target="_blank">The Most Dangerous Time to Drive</a></li>
+          <li><a href="https://elgphx.com/the-dangers-of-driving-in-the-dark-in-arizona/" target="_blank">The Dangers Of Driving In The Dark In Arizona</a></li>
+          <li><a href="https://blog.disabilitycanhappen.org/safety-tips-for-driving-in-the-dark/" target="_blank">Tips to Keep Safe on the Road When Driving in the Dark</a></li>
+          <li><a href="https://seriousaccidents.com/legal-advice/top-causes-of-car-accidents/nighttime-driving/" target="_blank">Night Driving</a></li>
+          <li><a href="https://injuryfacts.nsc.org/motor-vehicle/overview/crashes-by-time-of-day-and-day-of-week/" target="_blank">Crashes by Time of Day and Day of Week</a></li>
+          <li><a href="https://www.vititoelawgroup.com/2016/12/10/a_closer_look_at_car_accident_statistics_at_night/" target="_blank">A Closer Look at Car Accident Statistics at Night</a></li>
+          <li><a href="https://www.ddlawtampa.com/resources/car-accident-statistics-you-need-to-know-in-2021/" target="_blank">CAR ACCIDENT STATISTICS YOU NEED TO KNOW IN 2021</a></li>
+        </ul>
       </section>
     </>
   );

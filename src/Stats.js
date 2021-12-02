@@ -24,15 +24,14 @@ function Stats() {
   let options = {
     plugins: {
       title: {
-        display: true,
-        text: "Crashes Based on Time of Day"
+        display: false
       },
       legend: {
         display: true,
         position: "left"
       }
     },
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false
   }
 

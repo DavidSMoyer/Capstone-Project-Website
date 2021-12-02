@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import QuizAnswer from "./QuizAnswer.js";
+import Swal from 'sweetalert2';
 
 function Quiz() {
   let [questionIdx, setQuestionIdx] = useState(0);
@@ -16,7 +17,9 @@ function Quiz() {
         "Rushing Drivers",
         "All of the above"
       ],
-      correctAnswer: 4
+      correctAnswer: 4,
+      incorrectText: "Sorry, that's incorrect. There is more than one answer to this question.",
+      correctText: "Correct! These are all prevelant dangers of the night that you should be looking out for."
     },
     {
       question: "Within what distance must you dim your headlights against oncoming traffic?",
@@ -27,7 +30,9 @@ function Quiz() {
         "500m",
         "120m"
       ],
-      correctAnswer: 2
+      correctAnswer: 2,
+      incorrectText: "Incorrect.",
+      correctText: "That's correct! You should dim your headlights when within 200m of oncoming traffic so that you do not impair their sight."
     },
     {
       question: "When conditions are snowy or foggy, you must have your high beams on to increase visibility.",
@@ -38,7 +43,9 @@ function Quiz() {
         "",
         ""
       ],
-      correctAnswer: 2
+      correctAnswer: 2,
+      incorrectText: "Incorrect. Turning on your high beams will reflect in the water crystals, and reduce your sight further.",
+      correctText: "Correct! Low beams allow you to see the road without reflecting the light off of the water in the air."
     },
     {
       question: "More crashes occur between 4pm-8pm than any other time.",
@@ -49,7 +56,9 @@ function Quiz() {
         "",
         ""
       ],
-      correctAnswer: 1
+      correctAnswer: 1,
+      incorrectText: "That's incorrect.",
+      correctText: "That's correct. After 4pm, most people are heading home, depending on how late it is they may be coming home from bars or just rushing to get home."
     },
     {
       question: "What should not NOT do when driving at night?",
@@ -60,20 +69,56 @@ function Quiz() {
         "Drive at a reduced speed",
         "Drive even if you're drowsy"
       ],
-      correctAnswer: 4
+      correctAnswer: 4,
+      incorrectText: "Sorry, that's incorrect.",
+      correctText: "Correct! You should never drive while drowsy, or else you could endanger yourself and others by being less alert."
     },
+    {
+      question: "At what distance must you dim your headlights while following another vehicle?",
+      answers: [
+        "60m",
+        "200m",
+        "30m",
+        "120m"
+      ],
+      correctAnswer: 1,
+      incorrectText: "Sorry, that's incorrect.",
+      correctText: "Correct! If you are within 60m of a vehicle that you are following, you must dim your headlights."
+    }
   ]);
-  //setQuestions(Shuffle(questions))
 
-  let guess = (answer) => {
-    if (finished) return;
-    if (answer == questions[questionIdx].correctAnswer) setCorrect(correct + 1);
+  useEffect(() => {
+    setQuestions(Shuffle(questions))
+  }, [])
+
+  let nextQuestion = (correctAnswer) => {
+    if (correctAnswer) setCorrect(correct + 1);
     setAnswered(answered + 1);
     if (questionIdx >= questions.length - 1) {
       setFinished(true);
       return;
     }
     setQuestionIdx(questionIdx + 1);
+  }
+
+  let guess = (answer) => {
+    if (finished) return;
+    let correctAnswer = answer == questions[questionIdx].correctAnswer;
+    Swal.fire({
+      title: correctAnswer ? "Correct!" : "Incorrect!",
+      text: correctAnswer ? questions[questionIdx].correctText : questions[questionIdx].incorrectText,
+      icon: correctAnswer ? "success" : "error",
+      confirmButtonText: correctAnswer ? "Hooray!" : "Oh no!",
+      didClose: () => nextQuestion(correctAnswer)
+    });
+  }
+
+  let reset = () => {
+    setQuestions(Shuffle(questions));
+    setAnswered(0);
+    setFinished(false);
+    setCorrect(0);
+    setQuestionIdx(0);
   }
 
   return (
@@ -97,16 +142,33 @@ function Quiz() {
         !finished 
         ? (
         <div id="questions">
-          <QuizAnswer answer={questions[questionIdx].answers[0]} answerCall={guess} quizId={1} />
-          <QuizAnswer answer={questions[questionIdx].answers[1]} answerCall={guess} quizId={2} />
-          <QuizAnswer answer={questions[questionIdx].answers[2]} answerCall={guess} quizId={3} />
-          <QuizAnswer answer={questions[questionIdx].answers[3]} answerCall={guess} quizId={4} />
+          {
+            Shuffle([
+              <QuizAnswer answer={questions[questionIdx].answers[0]} answerCall={guess} quizId={1} />,
+              <QuizAnswer answer={questions[questionIdx].answers[1]} answerCall={guess} quizId={2} />,
+              <QuizAnswer answer={questions[questionIdx].answers[2]} answerCall={guess} quizId={3} />,
+              <QuizAnswer answer={questions[questionIdx].answers[3]} answerCall={guess} quizId={4} />
+            ])
+          }
         </div>
         )
         : (
           <div id="quiz-popup">
-            <h3>Quiz Complete</h3>
+            <h3>Quiz Complete!</h3>
             <p>You got {correct}/{questions.length}</p>
+            <p>
+              {
+                correct == answered ?
+                (
+                  "You got it all correct, nice work! You can take the quiz again, or continue looking into other topics!"
+                )
+                :
+                (
+                  "There's still area to improve! Read through all the material once more, then take a chance in the quiz!"
+                )
+              }
+            </p>
+            <button onClick={reset}>Retry?</button>
           </div>
         )
       }
@@ -119,13 +181,14 @@ function Shuffle(arr) {
 
   for (let i = 0; i < copy.length; i++) {
     for (let j = 0; j < copy.length; j++) {
-      let temp = copy[i];
-      copy[i] = copy[j];
+      let idx = Math.floor(Math.random() * copy.length)
+      let temp = copy[idx];
+      copy[idx] = copy[j];
       copy[j] = temp;
     }
   }
 
-  return arr;
+  return copy;
 }
 
 export default Quiz;

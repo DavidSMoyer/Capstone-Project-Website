@@ -22,10 +22,16 @@ function SideNav() {
             <a href="#section-2">Dangers of Driving in the Dark</a>
           </li>
           <li>
-            <a href="#section-3">Statistics</a>
+            <a href="#section-3">Crashes Based on Time of Day</a>
           </li>
           <li>
             <a href="#section-4">Safety Measures</a>
+          </li>
+          <li>
+            <a href="#quiz">Test Your Knowledge</a>
+          </li>
+          <li>
+            <a href="#bibliography">Bibliography</a>
           </li>
         </ul>
       </nav>
